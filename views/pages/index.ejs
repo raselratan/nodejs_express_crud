@@ -1,0 +1,41 @@
+<% include ../partials/header %>
+
+    <div class="mt-4">
+        <div class="col s12">
+            <a href="/event/add" class="btn btn-success btn-lg">Add a new Event</a>
+        </div>
+    </div>
+    <br>
+
+    <div class="=">
+        <div class="col s12">
+            
+                <table class="table">
+                    <thead>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Descripttion</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Actions</th>
+                    </thead>
+                    <tbody>
+                        <% items.forEach(function(item,index){ %>
+                        <tr>
+                            <td><%= index+1 %></td>
+                            <td><%= item.e_name %></td>
+                            <td><%= item.e_desc %></td>
+                            <td><%= moment(item.e_start_date).format( 'DD MMM, YYYY') %></td>
+                            <td><%= moment(item.e_end_date).format( 'DD MMM, YYYY') %></td>
+                            <td style="text-align: center;">
+                                <a class="btn btn-success" href="/event/edit/<%= item.e_id %>">Edit</a>
+                                <a class="btn btn-danger" href="/event/delete/<%= item.e_id %>">Delete</a>
+                            </td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+           
+        </div>
+    </div>
+<% include ../partials/footer %>
